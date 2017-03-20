@@ -12,17 +12,17 @@ class profile_telegraf::install {
     hostname => $::hostname,
     outputs  => {
         'influxdb' => {
-            'urls'     => [ "http://localhost:8086" ],
+            'urls'     => [ 'http://localhost:8086' ],
             'database' => 'telegraf',
             'username' => 'admin',
             'password' => 'admin',
-            }
+            },
         },
     inputs   => {
         'cpu' => {
             'percpu'   => true,
             'totalcpu' => true,
         },
-    }
+    },
   }
 }

@@ -12,4 +12,4 @@ fixtures:
     telegraf: "https://github.com/datacentred/puppet-telegraf.git"
 
   symlinks:
-    profile_influxdb: "#{source_dir}"
+    profile_telegraf: "#{source_dir}"
