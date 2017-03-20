@@ -25,4 +25,11 @@ class profile_telegraf::install {
         },
     },
   }
+
+  telegraf::input { 'internal':
+    plugin_type => 'internal',
+    options     => {
+      'collect_memstats' => true,
+    },
+  }
 }
