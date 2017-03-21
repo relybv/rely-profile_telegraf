@@ -32,4 +32,11 @@ class profile_telegraf::install {
       'collect_memstats' => true,
     },
   }
+  telegraf::input { 'disk':
+    plugin_type => 'disk',
+    options     => {
+      'ignore_fs' => ['tmpfs', 'devtmpfs'],
+    },
+  }
+
 }
