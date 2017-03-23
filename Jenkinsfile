@@ -43,8 +43,7 @@ node {
                 } catch (Exception err) {
                    currentBuild.result = 'SUCCESS'
                 }
-                slackSend "Job Debian 87 ${currentBuild.result} ${env.JOB_NAME} ${env.BUILD_NUMBER}
-(<${env.BUILD_URL}|Open>)"
+                slackSend "Job Debian 87 ${currentBuild.result} ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL}|Open>)"
             }
          }
       }
@@ -63,8 +62,7 @@ node {
                 } catch (Exception err) {
                    currentBuild.result = 'SUCCESS'
                 }
-                slackSend "Job Ubuntu 14.04 ${currentBuild.result} ${env.JOB_NAME} ${env.BUILD_NUMBER}
-(<${env.BUILD_URL}|Open>)"
+                slackSend "Job Ubuntu 14.04 ${currentBuild.result} ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL}|Open>)"
             }
          }
       }
@@ -83,8 +81,7 @@ node {
                 } catch (Exception err) {
                    currentBuild.result = 'SUCCESS'
                 }
-                slackSend "Job Ubuntu 16.04 ${currentBuild.result} ${env.JOB_NAME} ${env.BUILD_NUMBER}
-(<${env.BUILD_URL}|Open>)"
+                slackSend "Job Ubuntu 16.04 ${currentBuild.result} ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL}|Open>)"
             }
          }
       }
@@ -103,8 +100,7 @@ node {
                 } catch (Exception err) {
                    currentBuild.result = 'SUCCESS'
                 }
-                slackSend "Job Debian 78 ${currentBuild.result} ${env.JOB_NAME} ${env.BUILD_NUMBER}
-(<${env.BUILD_URL}|Open>)"
+                slackSend "Job Debian 78 ${currentBuild.result} ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL}|Open>)"
             }
          }
       }
@@ -123,8 +119,7 @@ node {
                 } catch (Exception err) {
                    currentBuild.result = 'SUCCESS'
                 }
-                slackSend "Job Centos 7 ${currentBuild.result} ${env.JOB_NAME} ${env.BUILD_NUMBER}
-(<${env.BUILD_URL}|Open>)"
+                slackSend "Job Centos 7 ${currentBuild.result} ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL}|Open>)"
             }
          }
       }
