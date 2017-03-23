@@ -9,6 +9,7 @@
 #
 class profile_telegraf
 {
+  # commentaar
   class { '::profile_telegraf::install': } ->
   class { '::profile_telegraf::config': } ~>
   class { '::profile_telegraf::service': } ->
