@@ -9,7 +9,7 @@ class profile_telegraf::install {
   }
 
   class { '::telegraf':
-    hostname => $::hostname,
+    hostname  => $::hostname,
     outputs  => {
         'influxdb' => {
             'urls'     => [ 'http://localhost:8086' ],
