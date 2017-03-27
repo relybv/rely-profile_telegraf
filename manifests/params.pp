@@ -4,7 +4,7 @@
 # It sets variables according to platform.
 #
 class profile_telegraf::params {
-  $monitor_address = localhost
+  $monitor_address = $::monitor_address
   case $::osfamily {
     'Debian': {
       $package_name = 'profile_telegraf'
