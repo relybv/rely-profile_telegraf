@@ -13,7 +13,7 @@ class profile_telegraf::install {
     hostname => $::fqdn,
     outputs  => {
         'influxdb' => {
-            'urls'     => [ "http://${::monitor_address}:8086" ],
+            'urls'     => [ "http://${profile_telegraf::monitor_address}:8086" ],
             'database' => 'telegraf',
             'username' => 'admin',
             'password' => 'admin',
