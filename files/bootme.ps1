@@ -54,7 +54,7 @@
   $client.DownloadFile( $CertUrl, $TempCert )
   certutil -v -addstore Root $TempCert
 
-  # install puppet windws modules
+  # install puppet windows modules
   $puppet_path = "C:\Program Files\Puppet Labs\Puppet\bin\puppet.bat"
   $puppet_modinst = "module install "
 
@@ -67,34 +67,7 @@
   }
   Write-Host "$puppet_module successfully installed."
 
-  $puppet_module = "puppet/msoffice"
-  $puppet_arg = $puppet_modinst + $puppet_module
-  $process = Start-Process -FilePath $puppet_path -ArgumentList $puppet_arg -Wait -PassThru -NoNewWindow
-  if ($process.ExitCode -ne 0) {
-    Write-Host "Install of $puppet_module failed."
-    Exit 1
-  }
-  Write-Host "$puppet_module successfully installed."
-
-  $puppet_module = "puppetlabs/mount_iso"
-  $puppet_arg = $puppet_modinst + $puppet_module
-  $process = Start-Process -FilePath $puppet_path -ArgumentList $puppet_arg -Wait -PassThru -NoNewWindow
-  if ($process.ExitCode -ne 0) {
-    Write-Host "Install of $puppet_module failed."
-    Exit 1
-  }
-  Write-Host "$puppet_module successfully installed."
-
-  $puppet_module = "dschaaff/nxlog"
-  $puppet_arg = $puppet_modinst + $puppet_module
-  $process = Start-Process -FilePath $puppet_path -ArgumentList $puppet_arg -Wait -PassThru -NoNewWindow
-  if ($process.ExitCode -ne 0) {
-    Write-Host "Install of $puppet_module failed."
-    Exit 1
-  }
-  Write-Host "$puppet_module successfully installed."
-
-  $puppet_module = "puppetlabs/motd"
+  $puppet_module = "puppetlabs/stdlib"
   $puppet_arg = $puppet_modinst + $puppet_module
   $process = Start-Process -FilePath $puppet_path -ArgumentList $puppet_arg -Wait -PassThru -NoNewWindow
   if ($process.ExitCode -ne 0) {
