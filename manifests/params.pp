@@ -14,6 +14,10 @@ class profile_telegraf::params {
       $package_name = 'profile_telegraf'
       $service_name = 'profile_telegraf'
     }
+    'Windows': {
+      $package_name = 'profile_telegraf'
+      $service_name = 'profile_telegraf'
+    }
     default: {
       fail("${::operatingsystem} not supported")
     }
