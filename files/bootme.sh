@@ -74,10 +74,10 @@ echo "Preparing modules"
 
 # copy to puppet module location
 if [ -d $MODULEDIR ]; then
-  cp -a /root/role_bootstrap/spec/fixtures/modules/* $MODULEDIR
+  cp -a /root/profile_telegraf/spec/fixtures/modules/* $MODULEDIR
 else
   mkdir $MODULEDIR
-  cp -a /root/role_bootstrap/spec/fixtures/modules/* $MODULEDIR
+  cp -a /root/profile_telegraf/spec/fixtures/modules/* $MODULEDIR
 fi
 
 echo "Run puppet apply"
