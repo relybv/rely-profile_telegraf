@@ -36,6 +36,7 @@ fi
 
 # install dependencies
 if which apt-get > /dev/null 2>&1; then
+    apt-get install apt-transport-https -y -q
     apt-get update
   else
     echo "Using yum"
