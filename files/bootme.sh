@@ -4,11 +4,13 @@
 #
 # Usage:
 # Ubuntu / Debian: wget https://raw.githubusercontent.com/relybv/rely-profile_telegraf/master/files/bootme.sh; bash bootme.sh
+# RH / CentOS: curl https://raw.githubusercontent.com/relybv/rely-profile_telegraf/master/files/bootme.sh -o bootme.sh; bash bootme.sh
 #
 # Options: add 3 as parameter to install 4.x release
 
 # default major version, comment to install puppet 3.x
 PUPPETMAJORVERSION=4
+export DEBIAN_FRONTEND=noninteractive
 
 ### Code start ###
 if [ "$(id -u)" != "0" ]; then
@@ -39,7 +41,11 @@ if which apt-get > /dev/null 2>&1; then
     echo "Using yum"
 fi
 
-apt-get install git bundler zlib1g-dev -y || yum install -y git bundler zlib-devel
+if which apt-get > /dev/null 2>&1; then
+ apt-get install git bundler zlib1g-dev libaugeas-ruby -y -q 
+else
+ yum install -y git bundler zlib-devel
+fi
 
 # get or update repo
 if [ -d /root/profile_telegraf ]; then
@@ -61,11 +67,18 @@ fi
 
 # prepare bundle
 echo "Installing gems"
-bundle install --path vendor/bundle --without development system_tests
+/opt/puppetlabs/puppet/bin/gem install puppetlabs_spec_helper --no-rdoc --no-ri -q
 # install dependencies from .fixtures
 echo "Preparing modules"
-bundle exec rake spec_prep
+/opt/puppetlabs/puppet/bin/rake spec_prep
+
 # copy to puppet module location
-cp -a /root/profile_telegraf/spec/fixtures/modules/* $MODULEDIR
+if [ -d $MODULEDIR ]; then
+  cp -a /root/role_bootstrap/spec/fixtures/modules/* $MODULEDIR
+else
+  mkdir $MODULEDIR
+  cp -a /root/role_bootstrap/spec/fixtures/modules/* $MODULEDIR
+fi
+
 echo "Run puppet apply"
 /usr/local/bin/puppet apply -e "include profile_telegraf"
