@@ -7,12 +7,13 @@ class profile_telegraf::install {
   if $caller_module_name != $module_name {
     fail("Use of private class ${name} by ${caller_module_name}")
   }
+  notify {"Running with ${::monitor_address} ":}
 
   class { '::telegraf':
     hostname => $::fqdn,
     outputs  => {
         'influxdb' => {
-            'urls'     => [ 'http://localhost:8086' ],
+            'urls'     => [ "http://${::monitor_address}:8086" ],
             'database' => 'telegraf',
             'username' => 'admin',
             'password' => 'admin',
