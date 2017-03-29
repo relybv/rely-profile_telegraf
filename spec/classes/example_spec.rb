@@ -15,11 +15,13 @@ describe 'profile_telegraf' do
 
           it { is_expected.to compile.with_all_deps }
           it { is_expected.to contain_class('profile_telegraf') }
+          it { is_expected.to contain_class('profile_telegraf::params') }
           it { is_expected.to contain_class('profile_telegraf::install') }
           it { is_expected.to contain_class('profile_telegraf::config') }
           it { is_expected.to contain_class('profile_telegraf::service') }
           it { is_expected.to contain_class('telegraf') }
 
+          it { is_expected.to contain_telegraf__input('cpu') }
           it { is_expected.to contain_telegraf__input('disk') }
           it { is_expected.to contain_telegraf__input('diskio') }
           it { is_expected.to contain_telegraf__input('internal') }
