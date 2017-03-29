@@ -9,6 +9,10 @@ class profile_telegraf::config {
   }
 
   # telegraf dynamic plugins
+
+  if defined('mysql::server') {
+    telegraf::input { 'mysql': }
+  }
   if defined('apache::mod::status') {
     telegraf::input { 'apache': }
   }
