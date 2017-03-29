@@ -11,10 +11,17 @@ class profile_telegraf::config {
   # telegraf dynamic plugins
 
   if defined('mysql::server') {
-    telegraf::input { 'mysql': }
+    telegraf::input { 'mysql':
+      plugin_type => 'mysql',
+        options   => {
+      'servers' => '["root:@tcp(127.0.0.1:3306)/?tls=false"]',
+    },
+    }
   }
   if defined('apache::mod::status') {
-    telegraf::input { 'apache': }
+    telegraf::input { 'apache':
+      plugin_type => 'apache',
+    }
   }
 
   # standard telegraf plugins
