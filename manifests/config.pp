@@ -9,7 +9,7 @@ class profile_telegraf::config {
   }
 
   # telegraf dynamic plugins
-  if defined(Class['apache::mod::status']) {
+  if defined('apache::mod::status') {
     telegraf::input { 'apache': }
   }
 
