@@ -14,7 +14,7 @@ class profile_telegraf::config {
     telegraf::input { 'mysql':
       plugin_type => 'mysql',
         options   => {
-      'servers' => '["root:@tcp(127.0.0.1:3306)/?tls=false"]',
+      'servers' => ['telegraf:telegraf@/'],
     },
     }
   }
