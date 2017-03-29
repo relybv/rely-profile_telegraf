@@ -15,8 +15,8 @@ class profile_telegraf
   if $monitor_address != undef {
     validate_string($monitor_address)
   }
-  class { '::profile_telegraf::install': } ->
-  class { '::profile_telegraf::config': } ~>
-  class { '::profile_telegraf::service': } ->
-  Class['::profile_telegraf']
+  class { '::profile_telegraf::install': }
+  -> class { '::profile_telegraf::config': }
+  ~> class { '::profile_telegraf::service': }
+  -> Class['::profile_telegraf']
 }
