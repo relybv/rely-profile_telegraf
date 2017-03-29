@@ -9,7 +9,14 @@ class profile_telegraf::config {
   }
 
   # telegraf dynamic plugins
-
+  if defined('haproxy') {
+    telegraf::input { 'haproxy':
+      plugin_type => 'haproxy',
+        options   => {
+      'servers' => ['/var/lib/haproxy/stats*.sock'],
+    },
+    }
+  }
   if defined('mysql::server') {
     telegraf::input { 'mysql':
       plugin_type => 'mysql',
