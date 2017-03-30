@@ -13,7 +13,7 @@ class profile_telegraf::config {
     telegraf::input { 'haproxy':
       plugin_type => 'haproxy',
         options   => {
-      'servers' => ['/var/lib/haproxy/stats*.sock'],
+      'servers' => ['socket:/var/lib/haproxy/stats'],
     },
     }
   }
