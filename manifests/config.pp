@@ -7,7 +7,17 @@ class profile_telegraf::config {
   if $caller_module_name != $module_name {
     fail("Use of private class ${name} by ${caller_module_name}")
   }
-
+  if $::osfamily == 'Windows' {
+    telegraf::input { 'inputs.win_perf_proc':
+      plugin_type => 'inputs.win_perf_counters.object',
+        options   => {
+      'Objectname'  => 'Processor',
+      'Instances'   => ['*'],
+      'counters'    => ['% Idle Time','% Free Space', '% Disk Time','% Disk Read Time', '% Disk Write Time', '% User Time', 'Current Disk Queue Length'],
+      'Measurement' => 'win_disk',
+      },
+    }
+  } else {
   # telegraf dynamic plugins
   if defined('haproxy') {
     telegraf::input { 'haproxy':
@@ -75,4 +85,5 @@ class profile_telegraf::config {
   telegraf::input { 'netstat':
     plugin_type => 'netstat',
   }
+}
 }
