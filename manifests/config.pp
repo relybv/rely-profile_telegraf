@@ -8,34 +8,9 @@ class profile_telegraf::config {
     fail("Use of private class ${name} by ${caller_module_name}")
   }
   if $::osfamily == 'Windows' {
-    telegraf::input { 'inputs.win_perf_proc':
-      plugin_type => 'win_perf_counters.object',
-        options   => {
-      'ObjectName' => 'Processor',
-      'Instances'     => ['*'],
-      'Counters'      => ['% Idle Time', '% Interrupt Time', '% Privileged Time', '% User Time', '% Processor Time'],
-      'Measurement'   => 'win_cpu',
-      },
+    file { 'C:\Program Files\telegraf\telegraf.d\inputs.conf':
+      source => template('profile/telegraf.inputs.conf.erb'),
     }
-    telegraf::input { 'inputs.win_perf_ldisk':
-      plugin_type => 'win_perf_counters.object',
-        options   => {
-      'ObjectName'  => 'LogicalDisk',
-      'Instances'   => ['*'],
-      'Counters'    => ['% Idle Time','% Free Space', '% Disk Time','% Disk Read Time', '% Disk Write Time', '% User Time', 'Current Disk Queue Length'],
-      'Measurement' => 'win_disk',
-      },
-    }
-    telegraf::input { 'inputs.win_perf_system':
-      plugin_type => 'win_perf_counters.object',
-        options   => {
-      'ObjectName'  => 'System',
-      'Instances'   => ['*'],
-      'Counters'    => ['Context Switches/sec','System Calls/sec','Processor Queue Length'],
-      'Measurement' => 'win_system',
-      },
-    }
-
   } else {
   # telegraf dynamic plugins
   if defined('haproxy') {
