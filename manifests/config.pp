@@ -8,7 +8,7 @@ class profile_telegraf::config {
     fail("Use of private class ${name} by ${caller_module_name}")
   }
   if $::osfamily == 'Windows' {
-    file { 'C:\Program Files\telegraf\telegraf.d\inputs.conf':
+    file { 'C:\\Program Files\\telegraf\\telegraf.d\\inputs.conf':
       source => template('profile_telegraf/telegraf.inputs.conf.erb'),
     }
   } else {
