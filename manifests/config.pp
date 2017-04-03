@@ -10,6 +10,7 @@ class profile_telegraf::config {
   if $::osfamily == 'Windows' {
     file { 'C:\\Program Files\\telegraf\\telegraf.d\\inputs.conf':
       source => 'puppet:///modules/profile_telegraf/telegraf.inputs.conf',
+      notify => Class['::telegraf::service'],
     }
   } else {
   # telegraf dynamic plugins
