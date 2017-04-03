@@ -9,7 +9,7 @@ class profile_telegraf::config {
   }
   if $::osfamily == 'Windows' {
     telegraf::input { 'inputs.win_perf_proc':
-      plugin_type => 'inputs.win_perf_counters.object',
+      plugin_type => 'win_perf_counters.object',
         options   => {
       'Objectname'  => 'Processor',
       'Instances'   => ['*'],
@@ -18,7 +18,7 @@ class profile_telegraf::config {
       },
     }
     telegraf::input { 'inputs.win_perf_ldisk':
-      plugin_type => 'inputs.win_perf_counters.object',
+      plugin_type => 'win_perf_counters.object',
         options   => {
       'Objectname'  => 'LogicalDisk',
       'Instances'   => ['*'],
