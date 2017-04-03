@@ -13,6 +13,15 @@ class profile_telegraf::config {
         options   => {
       'Objectname'  => 'Processor',
       'Instances'   => ['*'],
+      'counters'    => ['% Idle Time', '% Interrupt Time', '% Privileged Time', '% User Time', '% Processor Time'],
+      'Measurement' => 'win_cpu',
+      },
+    }
+    telegraf::input { 'inputs.win_perf_ldisk':
+      plugin_type => 'inputs.win_perf_counters.object',
+        options   => {
+      'Objectname'  => 'LogicalDisk',
+      'Instances'   => ['*'],
       'counters'    => ['% Idle Time','% Free Space', '% Disk Time','% Disk Read Time', '% Disk Write Time', '% User Time', 'Current Disk Queue Length'],
       'Measurement' => 'win_disk',
       },
