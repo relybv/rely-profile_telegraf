@@ -11,7 +11,7 @@ class profile_telegraf::config {
     telegraf::input { 'inputs.win_perf_proc':
       plugin_type => 'win_perf_counters.object',
         options   => {
-      'ObjectxiNname' => 'Processor',
+      'ObjectNname' => 'Processor',
       'Instances'     => ['*'],
       'Counters'      => ['% Idle Time', '% Interrupt Time', '% Privileged Time', '% User Time', '% Processor Time'],
       'Measurement'   => 'win_cpu',
