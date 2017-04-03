@@ -11,6 +11,9 @@ class profile_telegraf::config {
     file { 'C:\\Program Files\\telegraf\\telegraf.d\\inputs.conf':
       source => 'puppet:///modules/profile_telegraf/telegraf.inputs.conf',
     }
+    telegraf::input { 'mem':
+      plugin_type => 'mem',
+    }
   } else {
   # telegraf dynamic plugins
   if defined('haproxy') {
