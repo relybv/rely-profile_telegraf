@@ -28,7 +28,7 @@ class profile_telegraf::config {
     telegraf::input { 'mysql':
       plugin_type => 'mysql',
         options   => {
-      'servers' => ['telegraf:telegraf@/'],
+      'servers' => ['monitor:monitor@/'],
     },
     }
   }
