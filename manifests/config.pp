@@ -20,7 +20,7 @@ class profile_telegraf::config {
     telegraf::input { 'haproxy':
       plugin_type => 'haproxy',
         options   => {
-      'servers' => ['socket:/var/lib/haproxy/stats'],
+      'servers' => ['http://localhost:9090'],
     },
     }
   }
