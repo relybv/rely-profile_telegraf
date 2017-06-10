@@ -16,7 +16,11 @@ class profile_telegraf::install {
 
   Class['apt::update'] -> Package['telegraf']
 
-  ensure_resource('apt::source', 'influxrepo', {'ensure' => 'present', 'location' => "https://repos.influxdata.com/${_operatingsystem}", 'release' => $::lsbdistcodename, 'repos' => 'stable', 'key' => { 'id' => '05CE15085FC09D18E99EFB22684A14CF2582E0C5', 'source' => 'https://repos.influxdata.com/influxdb.key',} })
+  $_operatingsystem = downcase($::operatingsystem)
+
+  if ! defined(Apt::Source['influxrepo']) {
+    ensure_resource('apt::source', 'influxrepo', {'ensure' => 'present', 'location' => "https://repos.influxdata.com/${_operatingsystem}", 'release' => $::lsbdistcodename, 'repos' => 'stable', 'key' => { 'id' => '05CE15085FC09D18E99EFB22684A14CF2582E0C5', 'source' => 'https://repos.influxdata.com/influxdb.key',} })
+  }
 
   class { '::telegraf':
     hostname    => $::fqdn,
