@@ -22,7 +22,7 @@
       ]
     },
     {
-      "operatingsystem": "CentOS",
+      "operatingsystem": "Debian",
       "operatingsystemrelease": [
         "7"
       ]
