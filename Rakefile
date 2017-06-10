@@ -32,6 +32,7 @@ PuppetLint.configuration.send('disable_class_inherits_from_params_class')
 # Module name does not match class name
 PuppetLint.configuration.send('disable_autoloader_layout')
 PuppetLint.configuration.send('disable_inherits_across_namespaces')
+PuppetLint.configuration.send('disable_variable_scope')
 
 exclude_paths = [
   "bundle/**/*",
