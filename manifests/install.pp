@@ -23,7 +23,6 @@ class profile_telegraf::install {
   }
 
   class { '::telegraf':
-    hostname    => $::fqdn,
     manage_repo => false,
     outputs     => {
         'influxdb' => {
