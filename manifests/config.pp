@@ -24,7 +24,7 @@ class profile_telegraf::config {
     },
     }
   }
-  if defined('mysql::server') {
+  if defined(Class['role_db']) {
     telegraf::input { 'mysql':
       plugin_type => 'mysql',
         options   => {
@@ -32,7 +32,7 @@ class profile_telegraf::config {
     },
     }
   }
-  if defined('apache::mod::status') {
+  if defined(Class['role_appl']) {
     telegraf::input { 'apache':
       plugin_type => 'apache',
     }
