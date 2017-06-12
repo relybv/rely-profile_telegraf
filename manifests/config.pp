@@ -16,7 +16,7 @@ class profile_telegraf::config {
     }
   } else {
   # telegraf dynamic plugins
-  if defined('haproxy') {
+  if defined(Class['haproxy']) {
     telegraf::input { 'haproxy':
       plugin_type => 'haproxy',
         options   => {
