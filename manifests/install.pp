@@ -12,7 +12,6 @@ class profile_telegraf::install {
   } else {
     $monitor_address = $profile_telegraf::monitor_address
   }
-  notify {"Running with ${profile_telegraf::monitor_address} ":}
 
   Class['apt::update'] -> Package['telegraf']
 

@@ -21,6 +21,8 @@ describe 'profile_telegraf' do
           it { is_expected.to contain_class('profile_telegraf::service') }
           it { is_expected.to contain_class('telegraf') }
 
+          it { is_expected.to contain_apt__source('influxrepo') }
+
           it { is_expected.to contain_telegraf__input('cpu') }
           it { is_expected.to contain_telegraf__input('disk') }
           it { is_expected.to contain_telegraf__input('diskio') }
