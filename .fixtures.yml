@@ -9,7 +9,9 @@ fixtures:
     rspec_monitor: "git://github.com/pgomersbach/test-rspec_monitor.git"
     archive: "https://github.com/voxpupuli/puppet-archive.git"
     wget: "https://github.com/maestrodev/puppet-wget.git"
-    telegraf: "https://github.com/datacentred/puppet-telegraf.git"
+    telegraf:
+      repo: "https://github.com/datacentred/puppet-telegraf.git"
+      ref: "1.4.0"
 
   symlinks:
     profile_telegraf: "#{source_dir}"
